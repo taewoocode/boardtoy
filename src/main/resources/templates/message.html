@@ -2,27 +2,69 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Redirecting...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        p {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 
 <script th:inline="javascript">
+    /*<![CDATA[*/
+    var message = [[${message}]];
+    alert(message);
 
+    setTimeout(function() {
+        window.location.replace("[[${searchUrl}]]");
+    }, 3000); // Redirect after 3 seconds
 
-  /*<![CDATA[*/
-
-  var message =[[${message}]];
-
-  alert(message);
-
-  location.replace([[${searchUrl}]]);
-  /*]]>*/
-
+    /*]]>*/
 </script>
 
-
-
-
 <body>
-
+<div class="container">
+    <h1>Redirecting...</h1>
+    <p>You will be redirected shortly.</p>
+    <button onclick="window.location.replace('[[${searchUrl}]]')">Click here to redirect now</button>
+</div>
 </body>
 </html>

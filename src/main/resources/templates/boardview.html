@@ -3,13 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>게시글 상세 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
 
-<h1 th:text="${board.title}">제목입니다.</h1>
-<p th:text="${board.content}">내용이 들어갈 부분입니다.</p>
-<a th:href="@{board.filepath}">다운받기</a>
-<a th:href="@{/board/modify/{id}(id=${board.id})}">수정</a>
+<div class="container">
+    <h1 th:text="${board.title}">제목입니다.</h1>
+    <p th:text="${board.content}">내용이 들어갈 부분입니다.</p>
+    <a th:href="@{${board.filepath}}">다운받기</a>
+    <a th:href="@{/board/modify/{id}(id=${board.id})}">수정</a>
+</div>
 
 </body>
 </html>

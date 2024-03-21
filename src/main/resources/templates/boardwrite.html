@@ -1,44 +1,81 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>게시물 작성폼</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .layout {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .layout input[type="text"],
+        .layout textarea,
+        .layout input[type="file"] {
+            width: calc(100% - 22px);
+            padding: 12px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .layout textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+
+        .layout button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .layout button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .layout input[type="file"] {
+            border: none;
+            padding: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .layout input[type="file"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 
-<style>
-    .layout {
-        width: 500px;
-        margin: 0 auto;
-        margin-top: 40px;
-
-    }
-    .layout input,textarea {
-        width: 100%;
-        box-sizing: border-box;
-
-    }
-
-    .layout textarea {
-        width: 100%;
-        margin-top: 10px;
-        min-height: 300px;
-
-    }
-
-</style>
-
-
 <body>
-    <div class="layout">
-        <form action="/board/writepro" method="post" enctype=multipart/form-data">
-            <input name="title" type="text">
-            <textarea name="content"></textarea>
-            <input type="file">
-            <button type="submit">작성</button>
-        </form>
-    </div>
+<div class="layout">
+    <form action="/board/writepro" method="post" enctype="multipart/form-data">
+        <input name="title" type="text" placeholder="제목">
+        <textarea name="content" placeholder="내용"></textarea>
+        <input type="file" name="file">
+        <button type="submit">작성</button>
+    </form>
+</div>
 </body>
 </html>

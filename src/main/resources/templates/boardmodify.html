@@ -1,42 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>게시물 작성폼</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+
+    .layout {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+      background-color: #ffffff;
+    }
+
+    .layout input[type="text"],
+    .layout textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      box-sizing: border-box;
+      resize: none;
+    }
+
+    .layout textarea {
+      min-height: 200px;
+    }
+
+    .layout button[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .layout button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
-
-<style>
-  .layout {
-    width: 500px;
-    margin: 0 auto;
-    margin-top: 40px;
-
-  }
-  .layout input,textarea {
-    width: 100%;
-    box-sizing: border-box;
-
-  }
-
-  .layout textarea {
-    width: 100%;
-    margin-top: 10px;
-    min-height: 300px;
-
-  }
-
-</style>
-
 
 <body>
 <div class="layout">
-  <form action="/board/writepro" method="post">
-    <input name="title" type="text">
-    <textarea name="content"></textarea>
-    <button type="submit">작성</button>
+  <form th:action="@{/board/update/{id}(id = ${board.id})}" method="post">
+    <input name="title" type="text" th:value="${board.title}">
+    <textarea name="content" th:text="${board.content}"></textarea>
+    <button type="submit">수정</button>
   </form>
 </div>
 </body>
