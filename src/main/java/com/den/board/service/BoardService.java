@@ -47,7 +47,7 @@ public class BoardService {
     }
 
     public Page<Board> boardSearchList(String serachKeyword, Pageable pageable) {
-        return boardRepository.findByT
+        return boardRepository
     }
 
     // 특정 게시글 불러오기

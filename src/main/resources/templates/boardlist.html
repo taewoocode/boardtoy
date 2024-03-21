@@ -33,11 +33,14 @@
                         <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a>
                     </td>
                 </tr>
-
             </tbody>
-
-
         </table>
+        <th:block th:each="page : ${numbers.sequence(stagePage, endPage)}">
+            <a th:if="${page != nowPage}" th:href="@{/board/list(page =  ${page - 1})}" th:text="${page}">
+            <strong th:if="${page ==  nowPage}"  th:text="${page}" style="color : red"></strong>
+
+        </th:block>
+
     </div>
 
 

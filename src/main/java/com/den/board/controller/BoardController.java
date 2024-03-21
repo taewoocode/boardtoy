@@ -3,6 +3,7 @@ package com.den.board.controller;
 import com.den.board.entity.Board;
 import com.den.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -43,7 +44,17 @@ public class BoardController {
     public String boardList(Model model,@PageableDefault(page = 0, size = 10, sort = "id",
     direction = Sort.Direction.DESC) Pageable pageable) {
 
-        model.addAttribute( "list", boardService.boardList(pageable) );
+        Page<Board> list = boardService.boardList( pageable );
+
+        int nowPage = list.getPageable().getPageNumber() + 1; //page가져오기
+        int startPage = Math.max( nowPage - 4, 1 );
+        int endPage = Math.min( nowPage + 5, list.getTotalPages() );
+
+        model.addAttribute( "list" );
+        model.addAttribute( "nowPage", nowPage );
+        model.addAttribute( "endPage", startPage );
+        model.addAttribute( "endPage", endPage );
+        model.addAttribute( "list" );
 
         return "boardlist";
     }
