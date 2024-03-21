@@ -34,4 +34,12 @@ public class BoardService {
 
         return boardRepository.findById( id ).get(); //Optional
     }
+
+    //특정 게시글 삭제
+    public void boardDelete(Integer id) {
+
+        boardRepository.deleteById(  );
+    }
+
+
 }
