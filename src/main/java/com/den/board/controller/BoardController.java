@@ -1,5 +1,8 @@
 package com.den.board.controller;
 
+import com.den.board.entity.Board;
+import com.den.board.service.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,6 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class BoardController {
+
+    @Autowired
+    private BoardService boardService;
+
     @GetMapping("/board/write") //localhost8090에 boardwrite
     public String boardWriteForm() {
 
@@ -15,12 +22,17 @@ public class BoardController {
     }
 
     @PostMapping("/board/writepro")
-    public String boardWritePro(String title, String content) {
+    public String boardWritePro(Board board) {
 
-        System.out.println( "제목 : " + title );
-        System.out.println( "내용 : " + content );
+        boardService.write( board );
 
         return "";
 
+    }
+
+    @GetMapping("/board/list")
+    public String boardList() {
+
+        return "boardlist";
     }
 }
