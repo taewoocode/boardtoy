@@ -31,7 +31,6 @@ public class BoardController {
         model.addAttribute( "message", "글 작성 완료" );
         model.addAttribute( "serachUrl", "/board/list" );
 
-
         return "message";
 
     }
