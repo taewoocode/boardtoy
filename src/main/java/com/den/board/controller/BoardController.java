@@ -39,7 +39,7 @@ public class BoardController {
         return "boardlist";
     }
 
-    @GetMapping("/board/view") //localhost:8090/board/view?id=1 -> get방식 parameter로 구현
+    @GetMapping("/board/view") // localhost:8090/board/view?id=1 -> get방식 parameter로 넘김 출력은 html
     public String boardView(Model model, Integer id) {
 
         model.addAttribute( "board", boardService.boardView( id ) );
